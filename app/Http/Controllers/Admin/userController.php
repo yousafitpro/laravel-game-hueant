@@ -91,6 +91,7 @@ class userController extends Controller
           $user->type="user";
           $user->status='0';
           $user->address=$request->address;
+        $user->addedby_id=Auth::user()->id;
           $user->password=bcrypt($request->password);
           if($user->save())
           {
@@ -144,6 +145,7 @@ class userController extends Controller
         $user->fname=$request->fname;
         $user->lname=$request->lname;
         $user->phone=$request->phone;
+        $user->role_id=$request->role_id;
         $user->address=$request->address;
         if($request->has('password') && $request->password!="")
         {
@@ -189,7 +191,7 @@ class userController extends Controller
     }
     public function getAll()
     {
-       $users=User::where('id','!=',Auth::user()->id)->with('role')->get();
+       $users=User::where('id','!=',Auth::user()->id)->where('addedby_id',Auth::user()->id)->with('role')->get();
        return view('admin.user.all')->with('users',$users);
     }
 }

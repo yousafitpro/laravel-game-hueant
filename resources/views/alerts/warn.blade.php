@@ -6,11 +6,11 @@
                     closeButton: true,
                     progressBar: true,
                     showMethod: 'slideDown',
-                    timeOut: 4000
+                    timeOut:2000
                 };
                 toastr.warn('{{session('warn-msg')}}', 'Success');
 
-            }, 1300);
+            }, 1000);
         });
     </script>
     <?php Session::forget('warn-msg');?>

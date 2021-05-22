@@ -8,11 +8,11 @@
                 closeButton: true,
                 progressBar: true,
                 showMethod: 'slideDown',
-                timeOut: 4000
+                timeOut: 2000
             };
             toastr.success('{{session('success-msg')}}', 'Success');
 
-        }, 1300);
+        }, 1000);
     });
 
 </script>

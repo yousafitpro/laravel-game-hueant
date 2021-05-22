@@ -28,6 +28,27 @@
                 <a href="layouts.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
             </li>
             <li >
+                <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Withdrawal Request</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('admin.user.add')}}">Withdrawal Request</a></li>
+                    <li><a href="{{route('admin.user.getAll')}}">Withdrawal History</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="layouts.html"><i class="fa fa-trophy"></i> <span class="nav-label">Manage Lottary</span></a>
+            </li>
+            <li>
+                <a href="layouts.html"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Manage Post</span></a>
+            </li>
+            <li >
+                <a href="javascript:void"><i class="fa fa-gamepad"></i> <span class="nav-label">Tournament & Games</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('admin.user.add')}}">Tournaments</a></li>
+                    <li><a href="{{route('admin.user.getAll')}}">Games</a></li>
+                </ul>
+            </li>
+            <li >
                 <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Users</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('admin.user.add')}}">Add New</a></li>

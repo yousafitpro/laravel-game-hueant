@@ -8,6 +8,6 @@ Route::prefix('admin/user/')
         Route::get('getOne/{id}',[App\Http\Controllers\Admin\userController::class, 'getOne'])->name('admin.user.getOne');
         Route::post('update/{id}',[App\Http\Controllers\Admin\userController::class, 'update'])->name('admin.user.update');
         Route::get('active/{id}',[App\Http\Controllers\Admin\userController::class, 'active'])->name('admin.user.active');
-        Route::get('unActive/{id]',[App\Http\Controllers\Admin\userController::class, 'unActive'])->name('admin.user.unActive');
+        Route::get('unActive/{id}',[App\Http\Controllers\Admin\userController::class, 'unActive'])->name('admin.user.unActive');
         Route::get('getAll',[App\Http\Controllers\Admin\userController::class, 'getAll'])->name('admin.user.getAll');
     });

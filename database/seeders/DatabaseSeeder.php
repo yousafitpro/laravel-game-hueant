@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $user->fname="Muhammad";
         $user->lname="Yousaf";
         $user->phone="+923417414093";
+        $user->type="supper-admin";
+        $user->status="1";
         $user->address="here will be the address";
         $user->email="u@gmail.com";
         $user->password=bcrypt('12');
