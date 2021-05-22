@@ -27,11 +27,9 @@ Route::prefix('Dashboard/')
         Route::get('/',[App\Http\Controllers\DashboardController::class, 'index'])->name('Dashboard.index');
     });
 // user
-Route::prefix('user/')
-    ->middleware(['auth'])
-    ->group(function ($router) {
-        Route::get('update-profile',[App\Http\Controllers\userController::class, 'showProfile'])->name('user.showProfile');
-        Route::post('update-profile',[App\Http\Controllers\userController::class, 'updateProfile'])->name('user.showProfile');
-        Route::post('reset-password',[App\Http\Controllers\userController::class, 'resetPassword'])->name('user.resetPassword');
+include('webIncludes/user.php');
+// admin
+include('webIncludes/admin.php');
+//role
+include('webIncludes/role.php');
 
-    });

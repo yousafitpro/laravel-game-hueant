@@ -28,13 +28,17 @@
                 <a href="layouts.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
             </li>
             <li >
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Submenus</span> <span class="fa arrow"></span></a>
+                <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Users</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li class="active"><a href="index.html">Dashboard v.1</a></li>
-                    <li><a href="dashboard_2.html">Dashboard v.2</a></li>
-                    <li><a href="dashboard_3.html">Dashboard v.3</a></li>
-                    <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
-                    <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
+                    <li><a href="{{route('admin.user.add')}}">Add New</a></li>
+                    <li><a href="{{route('admin.user.getAll')}}">Users</a></li>
+                </ul>
+            </li>
+            <li >
+                <a href="javascript:void"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('admin.role.getAll')}}">Roles</a></li>
+                    <li><a href="dashboard_2.html">Web Configurations</a></li>
                 </ul>
             </li>
         </ul>
