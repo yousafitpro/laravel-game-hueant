@@ -32,4 +32,7 @@ include('webIncludes/user.php');
 include('webIncludes/admin.php');
 //role
 include('webIncludes/role.php');
-
+//game
+include('webIncludes/game.php');
+//tournment
+include('webIncludes/tournament.php');

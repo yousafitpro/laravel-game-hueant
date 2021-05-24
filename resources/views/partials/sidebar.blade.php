@@ -44,8 +44,8 @@
             <li >
                 <a href="javascript:void"><i class="fa fa-gamepad"></i> <span class="nav-label">Tournament & Games</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="{{route('admin.user.add')}}">Tournaments</a></li>
-                    <li><a href="{{route('admin.user.getAll')}}">Games</a></li>
+                    <li><a href="{{route('admin.tournament.getAll')}}">Tournaments</a></li>
+                    <li><a href="{{route('admin.game.getAll')}}">Games</a></li>
                 </ul>
             </li>
             <li >
