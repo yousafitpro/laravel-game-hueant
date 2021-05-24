@@ -18,5 +18,6 @@
 
     <link href="{{ asset('backend-theme/css/animate.css')}}" rel="stylesheet">
     <link href="{{ asset('backend-theme/css/style.css')}}" rel="stylesheet">
-    <link href="{{ asset('backend-theme/css/plugins/summernote/summernote-bs4.css')}}" rel="stylesheet">
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
