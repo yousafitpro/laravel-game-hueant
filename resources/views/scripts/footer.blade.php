@@ -39,6 +39,15 @@
 
 <!-- Toastr -->
 <script src="{{ asset('backend-theme/js/plugins/toastr/toastr.min.js')}}"></script>
+<script src="{{ asset('backend-theme/js/plugins/summernote/summernote-bs4.js')}}"></script>
+<script>
+    $(document).ready(function(){
+
+        // $('.summernote').summernote();
+        $('.summernote').summernote();
+
+    });
+</script>
 <script>
     $(document).ready(function(){
         $('.dataTables-example').DataTable({

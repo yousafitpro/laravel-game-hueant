@@ -36,3 +36,9 @@ include('webIncludes/role.php');
 include('webIncludes/game.php');
 //tournment
 include('webIncludes/tournament.php');
+//withdrawalHistory
+include('webIncludes/withdrawalHistory.php');
+//withdrawalRequest
+include('webIncludes/withdrawalRequest.php');
+//post
+include('webIncludes/post.php');

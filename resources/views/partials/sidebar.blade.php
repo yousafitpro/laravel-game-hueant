@@ -30,8 +30,8 @@
             <li >
                 <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Withdrawal Request</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="{{route('admin.user.add')}}">Withdrawal Request</a></li>
-                    <li><a href="{{route('admin.user.getAll')}}">Withdrawal History</a></li>
+                    <li><a href="{{route('admin.withdrawalRequest.getAll')}}">Withdrawal Request</a></li>
+                    <li><a href="{{route('admin.withdrawalHistory.getAll')}}">Withdrawal History</a></li>
                 </ul>
             </li>
 
@@ -39,7 +39,7 @@
                 <a href="layouts.html"><i class="fa fa-trophy"></i> <span class="nav-label">Manage Lottary</span></a>
             </li>
             <li>
-                <a href="layouts.html"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Manage Post</span></a>
+                <a href="{{route('admin.post.getAll')}}"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Manage Posts</span></a>
             </li>
             <li >
                 <a href="javascript:void"><i class="fa fa-gamepad"></i> <span class="nav-label">Tournament & Games</span> <span class="fa arrow"></span></a>

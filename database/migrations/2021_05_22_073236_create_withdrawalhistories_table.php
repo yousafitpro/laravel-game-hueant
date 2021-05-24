@@ -17,7 +17,9 @@ class CreateWithdrawalhistoriesTable extends Migration
             $table->bigInteger('user_id');
             $table->string('wallet_amount');
             $table->string('requested_amount');
-            $table->string('flag');
+            $table->string('status');
+            $table->string('completed_at');
+            $table->timestamps();
         });
     }
 

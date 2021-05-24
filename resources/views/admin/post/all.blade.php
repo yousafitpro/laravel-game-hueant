@@ -5,7 +5,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{route('admin.tournament.add')}}">  <button class="btn btn-primary float-right"> Add New</button></a>
+                    <a href="{{route('admin.post.add')}}">  <button class="btn btn-primary float-right"> Add New</button></a>
                 </div>
             </div>
             <br>
@@ -13,28 +13,22 @@
         <table class="table  table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Game</th>
-                <th>Status</th>
-                <th>Start Date</th>
+                <th>Title</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
 
-            @foreach($roles as $role)
+            @foreach($posts as $post)
             <tr class="center">
-                <td>{{$role->name}}</td>
-                <td>{{$role->game->name}}</td>
-                <td>{{$role->status}}</td>
-                <td>{{$role->start_date}}</td>
+                <td>{{$post->title}}</td>
                 <td width="50px">
                     <div class="dropdown dropdown-menu-bottom">
                         <i class="fa fa-cogs" data-toggle="dropdown"></i>
 
                         <ul class="dropdown-menu">
                             <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
-                            <li><a href="{{route('admin.tournament.getOne',$role->id)}}">Edit/View</a></li>
+                            <li><a href="{{route('admin.post.getOne',$post->id)}}">Edit/View</a></li>
                         </ul>
                     </div>
                 </td>
@@ -54,7 +48,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                           <a href="{{route('admin.tournament.deleteOne',$role->id)}}"> <button type="button" class="btn btn-primary">Yes</button></a>
+                           <a href="{{route('admin.post.deleteOne',$post->id)}}"> <button type="button" class="btn btn-primary">Yes</button></a>
                         </div>
                     </div>
                 </div>
@@ -63,10 +57,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <th>Name</th>
-                <th>Game</th>
-                <th>Status</th>
-                <th>Start Date</th>
+                <th>Title</th>
                 <th>Actions</th>
             </tr>
             </tfoot>

@@ -18,5 +18,5 @@
 
     <link href="{{ asset('backend-theme/css/animate.css')}}" rel="stylesheet">
     <link href="{{ asset('backend-theme/css/style.css')}}" rel="stylesheet">
-
+    <link href="{{ asset('backend-theme/css/plugins/summernote/summernote-bs4.css')}}" rel="stylesheet">
 </head>

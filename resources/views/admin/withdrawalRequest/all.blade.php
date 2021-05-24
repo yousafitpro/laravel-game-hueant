@@ -3,38 +3,31 @@
     <div class="card">
 
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="{{route('admin.tournament.add')}}">  <button class="btn btn-primary float-right"> Add New</button></a>
-                </div>
-            </div>
-            <br>
     <div class="table-responsive">
         <table class="table  table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Game</th>
-                <th>Status</th>
-                <th>Start Date</th>
+                <th>ID</th>
+                <th>Withdraw Amount</th>
+                <th>Request Amount</th>
+                <th>Created At</th>
+                <th>Withdraw Request Flag</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
 
-            @foreach($roles as $role)
+            @foreach($requests as $request)
             <tr class="center">
-                <td>{{$role->name}}</td>
-                <td>{{$role->game->name}}</td>
-                <td>{{$role->status}}</td>
-                <td>{{$role->start_date}}</td>
+                <td></td>
                 <td width="50px">
                     <div class="dropdown dropdown-menu-bottom">
                         <i class="fa fa-cogs" data-toggle="dropdown"></i>
 
                         <ul class="dropdown-menu">
                             <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
-                            <li><a href="{{route('admin.tournament.getOne',$role->id)}}">Edit/View</a></li>
+                            <li><a href="{{route('admin.role.getOne',$request->id)}}">Cancel</a></li>
+                            <li><a href="{{route('admin.role.getOne',$request->id)}}">Approve</a></li>
                         </ul>
                     </div>
                 </td>
@@ -54,7 +47,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                           <a href="{{route('admin.tournament.deleteOne',$role->id)}}"> <button type="button" class="btn btn-primary">Yes</button></a>
+                           <a href="{{route('admin.role.deleteOne',$request->id)}}"> <button type="button" class="btn btn-primary">Yes</button></a>
                         </div>
                     </div>
                 </div>
@@ -63,10 +56,11 @@
             </tbody>
             <tfoot>
             <tr>
-                <th>Name</th>
-                <th>Game</th>
-                <th>Status</th>
-                <th>Start Date</th>
+                <th>ID</th>
+                <th>Withdraw Amount</th>
+                <th>Request Amount</th>
+                <th>Created At</th>
+                <th>Withdraw Request Flag</th>
                 <th>Actions</th>
             </tr>
             </tfoot>
