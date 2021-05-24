@@ -41,7 +41,7 @@
                                             <br>
                                         </div>
                                         <div class="col-md-10">
-                                            <textarea class="summernote" name="contentdata" >{{$post->content}}</textarea>
+                                            <textarea class="summernote" name="contentdata">{{$post->content}}</textarea>
 
 
                                         </div>

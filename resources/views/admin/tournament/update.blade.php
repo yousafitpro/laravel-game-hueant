@@ -57,7 +57,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input  required class="form-control" name="start_date" type="date"{{$tournament->start_date}}>
+                                    <input  required class="form-control" name="start_date" type="date" value="{{$tournament->start_date}}">
                                 </div>
                                 <div class="col-md-6">
                                     <select name="status" class="form-control">
