@@ -5,7 +5,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{route('admin.tournament.add')}}">  <button class="btn btn-primary float-right"> Add New</button></a>
+                    <a href="{{route('admin.lottery.add')}}">  <button class="btn btn-primary float-right"> Add New</button></a>
                 </div>
             </div>
             <br>
@@ -13,28 +13,40 @@
         <table class="table  table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Game</th>
-                <th>Status</th>
-                <th>Start Date</th>
+                <th>ID</th>
+                <th>Admin %</th>
+                <th>Winner 1 %</th>
+                <th>Winner 2 %</th>
+                <th>Winner 3 %</th>
+                <th>Winner 4 %</th>
+                <th>Winner 5 %</th>
+                <th>Sec Win's %</th>
+                <th>Sec Win's Max Amt</th>
+                <th>Minimum Witdraw Amount </th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
 
-            @foreach($tournaments as $tournament)
+            @foreach($lotteries as $lottery)
             <tr class="center">
-                <td>{{$tournament->name}}</td>
-                <td>{{$tournament->game->name}}</td>
-                <td>{{$tournament->status}}</td>
-                <td>{{$tournament->start_date}}</td>
+                <td>{{$lottery->id}}</td>
+                <td>{{$lottery->admin}}</td>
+                <td>{{$lottery->win1}}</td>
+                <td>{{$lottery->win2}}</td>
+                <td>{{$lottery->win3}}</td>
+                <td>{{$lottery->win4}}</td>
+                <td>{{$lottery->win5}}</td>
+                <td>{{$lottery->sec_win}}</td>
+                <td>{{$lottery->sec_win_max_amt}}</td>
+                <td>{{$lottery->min_withdraw_amt}}</td>
                 <td width="50px">
                     <div class="dropdown dropdown-menu-bottom">
                         <i class="fa fa-cogs" data-toggle="dropdown"></i>
 
                         <ul class="dropdown-menu">
                             <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
-                            <li><a href="{{route('admin.tournament.getOne',$tournament->id)}}">Edit/View</a></li>
+                            <li><a href="{{route('admin.lottery.getOne',$lottery->id)}}">Edit/View</a></li>
                         </ul>
                     </div>
                 </td>
@@ -54,7 +66,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                           <a href="{{route('admin.tournament.deleteOne',$tournament->id)}}"> <button type="button" class="btn btn-primary">Yes</button></a>
+                           <a href="{{route('admin.lottery.deleteOne',$lottery->id)}}"> <button type="button" class="btn btn-primary">Yes</button></a>
                         </div>
                     </div>
                 </div>
@@ -63,10 +75,16 @@
             </tbody>
             <tfoot>
             <tr>
-                <th>Name</th>
-                <th>Game</th>
-                <th>Status</th>
-                <th>Start Date</th>
+                <th>ID</th>
+                <th>Admin</th>
+                <th>Winner 1</th>
+                <th>Winner 2</th>
+                <th>Winner 3</th>
+                <th>Winner 4</th>
+                <th>Winner 5</th>
+                <th>Sec Win's </th>
+                <th>Sec Win's Max Amt</th>
+                <th>Minimum Witdraw Amount </th>
                 <th>Actions</th>
             </tr>
             </tfoot>

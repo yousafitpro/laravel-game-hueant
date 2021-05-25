@@ -11,7 +11,7 @@
 @include('css.header')
 
 
-<body>
+<body >
 <div id="wrapper">
     @include('partials.sidebar')
     <div id="page-wrapper" class="gray-bg dashbard-1">

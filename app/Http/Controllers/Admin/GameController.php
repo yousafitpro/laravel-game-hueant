@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\game;
+use App\Models\lottery;
 use App\Models\role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -62,7 +64,7 @@ class GameController extends Controller
     }
     public function getAll()
     {
-        $games=game::with('user')->get();
+        $games=game::where('user_id',Auth::user()->id)->with('user')->get();
         return view('admin.game.all')->with('games',$games);
     }
 }

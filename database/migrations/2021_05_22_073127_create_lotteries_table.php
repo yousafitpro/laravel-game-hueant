@@ -15,6 +15,17 @@ class CreateLotteriesTable extends Migration
     {
         Schema::create('lotteries', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id');
+            $table->string('admin');
+            $table->string('win1');
+            $table->string('win2');
+            $table->string('win3');
+            $table->string('win4');
+            $table->string('win5');
+            $table->string('sec_win');
+            $table->string('sec_win_count');
+            $table->string('sec_win_max_amt');
+            $table->string('min_withdraw_amt');
             $table->timestamps();
         });
     }

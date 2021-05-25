@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -62,7 +63,7 @@ class roleController extends Controller
     }
     public function getAll()
     {
-       $roles=role::with('user')->get();
+       $roles=role::where('user_id',Auth::user()->id)->with('user')->get();
        return view('admin.role.all')->with('roles',$roles);
     }
 }

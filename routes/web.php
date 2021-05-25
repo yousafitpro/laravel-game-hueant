@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -24,8 +24,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('Dashboard/')
     ->middleware(['auth'])
     ->group(function ($router) {
-        Route::get('/',[App\Http\Controllers\DashboardController::class, 'index'])->name('Dashboard.index');
+        Route::get('/',[App\Http\Controllers\DashboardController::class, 'index'])->name('admin.dashboard');
     });
+// webConfig
+include('webIncludes/webConfig.php');
 // user
 include('webIncludes/user.php');
 // admin
@@ -42,3 +44,5 @@ include('webIncludes/withdrawalHistory.php');
 include('webIncludes/withdrawalRequest.php');
 //post
 include('webIncludes/post.php');
+//lottery
+include('webIncludes/lottery.php');

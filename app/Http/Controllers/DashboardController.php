@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\game;
+use App\Models\lottery;
+use App\Models\tournament;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -12,6 +18,11 @@ class DashboardController extends Controller
     }
     public function index()
     {
-        return view('pages.index');
+        $data['userCount']=User::all()->count()-1;
+        $data['gameCount']=game::all()->count();
+        $data['tournamentCount']=tournament::all()->count();
+        $data['lotteryCount']=lottery::all()->count();
+        $data['users']=User::where('id','!=',Auth::user()->id)->whereDate('created_at', DB::raw('CURDATE()'))->get();
+        return view('pages.index')->with($data);
     }
 }

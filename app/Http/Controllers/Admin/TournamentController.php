@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\game;
-use App\Models\role;
 use App\Models\tournament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -53,8 +52,8 @@ class TournamentController extends Controller
     }
     public function deleteOne($id)
     {
-        $role=tournament::find($id);
-        if($role->delete())
+        $tournament=tournament::find($id);
+        if($tournament->delete())
         {
             Session::put('success-msg',"Tournament Successfully Deleted");
         }
@@ -63,9 +62,12 @@ class TournamentController extends Controller
     public function update(Request $request,$id)
     {
 
-        $role=tournament::find($id);
-        $role->name=$request->name;
-        if($role->save())
+        $tournament=tournament::find($id);
+        $tournament->name=$request->name;
+        $tournament->game_id=$request->game_id;
+        $tournament->start_date=$request->start_date;
+        $tournament->status=$request->status;
+        if($tournament->save())
         {
             Session::put('success-msg',"Tournament Successfully Updated");
         }
@@ -73,7 +75,7 @@ class TournamentController extends Controller
     }
     public function getAll()
     {
-        $roles=tournament::with('user')->get();
-        return view('admin.tournament.all')->with('roles',$roles);
+        $tournaments=tournament::where('user_id',Auth::user()->id)->with('user')->get();
+        return view('admin.tournament.all')->with('tournaments',$tournaments);
     }
 }

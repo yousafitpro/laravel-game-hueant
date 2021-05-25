@@ -25,7 +25,7 @@
             </li>
 
             <li>
-                <a href="layouts.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
+                <a href="{{route('admin.dashboard')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
             </li>
             <li >
                 <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Withdrawal Request</span> <span class="fa arrow"></span></a>
@@ -36,7 +36,7 @@
             </li>
 
             <li>
-                <a href="layouts.html"><i class="fa fa-trophy"></i> <span class="nav-label">Manage Lottary</span></a>
+                <a href="{{route('admin.lottery.getAll')}}"><i class="fa fa-ticket"></i> <span class="nav-label">Manage Lottary</span></a>
             </li>
             <li>
                 <a href="{{route('admin.post.getAll')}}"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Manage Posts</span></a>
@@ -59,7 +59,7 @@
                 <a href="javascript:void"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('admin.role.getAll')}}">Roles</a></li>
-                    <li><a href="dashboard_2.html">Web Configurations</a></li>
+                    <li><a href="{{route('admin.webConfig.getConfig')}}">Web Configurations</a></li>
                 </ul>
             </li>
         </ul>
