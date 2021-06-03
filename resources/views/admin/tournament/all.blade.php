@@ -17,6 +17,7 @@
                 <th>Game</th>
                 <th>Status</th>
                 <th>Start Date</th>
+                <th>Is Satrted</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -28,13 +29,27 @@
                 <td>{{$tournament->game->name}}</td>
                 <td>{{$tournament->status}}</td>
                 <td>{{$tournament->start_date}}</td>
+                @if($tournament->is_started=='1')
+                <td>Yes</td>
+                @endif
+                @if($tournament->is_started=='0')
+                    <td>No</td>
+                @endif
                 <td width="50px">
                     <div class="dropdown dropdown-menu-bottom">
                         <i class="fa fa-cogs" data-toggle="dropdown"></i>
 
                         <ul class="dropdown-menu">
-                            <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
-                            <li><a href="{{route('admin.tournament.getOne',$tournament->id)}}">Edit/View</a></li>
+                            @if($tournament->is_started=='0')
+                                <li><a href="{{route('admin.tournament.start',$tournament->id)}}">Start</a></li>
+                            @endif
+                            @if($tournament->is_started=='1')
+                                <li><a href="{{route('admin.tournament.end',$tournament->id)}}">End</a></li>
+                            @endif
+                                <li><a href="{{route('admin.tournament.getOne',$tournament->id)}}">Edit/View</a></li>
+
+                                <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
+
                         </ul>
                     </div>
                 </td>
@@ -67,6 +82,7 @@
                 <th>Game</th>
                 <th>Status</th>
                 <th>Start Date</th>
+                <th>Is Satrted</th>
                 <th>Actions</th>
             </tr>
             </tfoot>

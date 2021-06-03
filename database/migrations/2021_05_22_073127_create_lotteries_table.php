@@ -23,6 +23,7 @@ class CreateLotteriesTable extends Migration
             $table->string('win4');
             $table->string('win5');
             $table->string('sec_win');
+            $table->string('tournament_id');
             $table->string('sec_win_count');
             $table->string('sec_win_max_amt');
             $table->string('min_withdraw_amt');

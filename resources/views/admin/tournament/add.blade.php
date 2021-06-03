@@ -65,8 +65,25 @@
                 </div>
                 <br>
                 <div class="row">
+                    <div class="col-md-6">
+                        <label >
+                            Duration (months)
+                        </label>
+                        <br>
+                        <input  required class="form-control" name="duration" type="number">
+                    </div>
+                    <div class="col-md-6">
+                        <label >
+                            Collected Amount
+                        </label>
+                        <br>
+                        <input  required class="form-control" name="collected_amount" type="number">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
                     <div class="col-md-12 ">
-                        <button class="btn btn-primary float-right" type="submit">Add Game</button>
+                        <button class="btn btn-primary float-right" type="submit">Add</button>
                     </div>
                 </div>
             </div>

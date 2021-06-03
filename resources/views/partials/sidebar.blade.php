@@ -24,44 +24,51 @@
                 </div>
             </li>
 
-            <li>
-                <a href="{{route('admin.dashboard')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
-            </li>
-            <li >
-                <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Withdrawal Request</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li><a href="{{route('admin.withdrawalRequest.getAll')}}">Withdrawal Request</a></li>
-                    <li><a href="{{route('admin.withdrawalHistory.getAll')}}">Withdrawal History</a></li>
-                </ul>
-            </li>
+          @if(Auth::user()->type=='supper-admin')
+                <li>
+                    <a href="{{route('admin.dashboard')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
+                </li>
+                <li >
+                    <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Withdrawal Request</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="{{route('admin.withdrawalRequest.getAll')}}">Withdrawal Request</a></li>
+                        <li><a href="{{route('admin.withdrawalHistory.getAll')}}">Withdrawal History</a></li>
+                    </ul>
+                </li>
 
+                <li>
+                    <a href="{{route('admin.lottery.getAll')}}"><i class="fa fa-ticket"></i> <span class="nav-label">Manage Lottary</span></a>
+                </li>
+                <li>
+                    <a href="{{route('admin.post.getAll')}}"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Manage Posts</span></a>
+                </li>
+                <li >
+                    <a href="javascript:void"><i class="fa fa-gamepad"></i> <span class="nav-label">Tournament & Games</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="{{route('admin.tournament.getAll')}}">Tournaments</a></li>
+                        <li><a href="{{route('admin.game.getAll')}}">Games</a></li>
+                    </ul>
+                </li>
+                <li >
+                    <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Users</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="{{route('admin.user.add')}}">Add New</a></li>
+                        <li><a href="{{route('admin.user.getAll')}}">Users</a></li>
+                    </ul>
+                </li>
+                <li >
+                    <a href="javascript:void"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="{{route('admin.role.getAll')}}">Roles</a></li>
+                        <li><a href="{{route('admin.webConfig.getConfig')}}">Web Configurations</a></li>
+                    </ul>
+                </li>
+              @endif
+            @if(Auth::user()->type=='user')
             <li>
-                <a href="{{route('admin.lottery.getAll')}}"><i class="fa fa-ticket"></i> <span class="nav-label">Manage Lottary</span></a>
+                <a href="{{route('admin.game.getAll')}}"><i class="fa fa-gamepad"></i> <span class="nav-label">Games</span></a>
             </li>
-            <li>
-                <a href="{{route('admin.post.getAll')}}"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Manage Posts</span></a>
-            </li>
-            <li >
-                <a href="javascript:void"><i class="fa fa-gamepad"></i> <span class="nav-label">Tournament & Games</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li><a href="{{route('admin.tournament.getAll')}}">Tournaments</a></li>
-                    <li><a href="{{route('admin.game.getAll')}}">Games</a></li>
-                </ul>
-            </li>
-            <li >
-                <a href="javascript:void"><i class="fa fa-users"></i> <span class="nav-label">Users</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li><a href="{{route('admin.user.add')}}">Add New</a></li>
-                    <li><a href="{{route('admin.user.getAll')}}">Users</a></li>
-                </ul>
-            </li>
-            <li >
-                <a href="javascript:void"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li><a href="{{route('admin.role.getAll')}}">Roles</a></li>
-                    <li><a href="{{route('admin.webConfig.getConfig')}}">Web Configurations</a></li>
-                </ul>
-            </li>
+                @endif
         </ul>
 
     </div>

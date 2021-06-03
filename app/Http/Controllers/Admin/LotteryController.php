@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\lottery;
+use App\Models\tournament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,8 @@ class LotteryController extends Controller
 {
     public function addView()
     {
-        return view('admin.lottery.add');
+        $tournaments=tournament::where('user_id',\auth()->user()->id)->get();
+        return view('admin.lottery.add')->with(['tournaments'=>$tournaments]);
     }
     public function add(Request $request)
     {
@@ -26,6 +28,7 @@ class LotteryController extends Controller
             'win3'=>'required|integer',
             'win4'=>'required|integer',
             'win5'=>'required|integer',
+            'tournament_id'=>'required|integer',
             'sec_win'=>'required|integer',
             'sec_win_count'=>'required|integer',
             'sec_win_max_amt'=>'required|integer',
@@ -38,6 +41,7 @@ class LotteryController extends Controller
         }
         $lottery=new lottery();
         $lottery->admin=$request->admin;
+        $lottery->tournament_id=$request->tournament_id;
         $lottery->win1=$request->win1;
         $lottery->win2=$request->win2;
         $lottery->win3=$request->win3;
@@ -55,8 +59,9 @@ class LotteryController extends Controller
     }
     public function getOne($id)
     {
-        $lottery=lottery::find($id);
-        return view('admin.lottery.update')->with('lottery',$lottery);
+        $tournaments=tournament::where('user_id',\auth()->user()->id)->get();
+        $lottery=lottery::where('id',$id)->with('tournament')->first();
+        return view('admin.lottery.update')->with(['lottery'=>$lottery,'tournaments'=>$tournaments]);
     }
     public function deleteOne($id)
     {

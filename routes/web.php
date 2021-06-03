@@ -46,3 +46,5 @@ include('webIncludes/withdrawalRequest.php');
 include('webIncludes/post.php');
 //lottery
 include('webIncludes/lottery.php');
+//lottery
+include('webIncludes/leaderboard.php');

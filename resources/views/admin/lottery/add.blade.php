@@ -107,19 +107,32 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label >
                           Minimum Withdraw Amount
                         </label>
                         <br>
                     </div>
+                    <div class="col-md-6">
+                        <label >
+                            Tournament
+                        </label>
+                        <br>
 
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <input  required class="form-control" name="min_withdraw_amt" type="number">
                     </div>
+                   <div class="col-md-6">
+                       <select name="tournament_id" class="form-control">
+                           @foreach($tournaments as $t)
+                               <option value="{{$t->id}}">{{$t->name}}</option>
+                           @endforeach
 
+                       </select>
+                   </div>
                 </div>
                 <br>
 

@@ -12,7 +12,8 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "tymon/jwt-auth": "^1.0.0-rc.2"
+        "tymon/jwt-auth": "^1.0.0-rc.2",
+        "nesbot/carbon": "^2.36"
     },
     "require-dev": {
         "beyondcode/laravel-er-diagram-generator": "^1.5",

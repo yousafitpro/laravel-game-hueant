@@ -27,8 +27,13 @@
                         <i class="fa fa-cogs" data-toggle="dropdown"></i>
 
                         <ul class="dropdown-menu">
+                            @if(Auth::user()->type=='supper-admin')
                             <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
+                            @endif
+                                <li><a href="{{route('admin.leaderboard.show',$game->id)}}" >Leaderboard</a></li>
+                            @if(Auth::user()->type=='supper-admin')
                             <li><a href="{{route('admin.game.getOne',$game->id)}}">Edit/View</a></li>
+                       @endif
                         </ul>
                     </div>
                 </td>

@@ -95,7 +95,7 @@
                                     <input type="file" class="form-control" accept="image/x-png,image/gif,image/jpeg" name="company_logo">
                                 </div>
                                 <div class="col-md-6">
-                                    <select name="locale" class="form-control">
+                                    <select name="mylocale" class="form-control">
                                         <option value="{{asset($config->locale)}}">{{asset($config->locale)}}</option>
                                         <option value="en">en</option>
 
@@ -120,7 +120,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input  required class="form-control" name="backend_navbar_color" value="{{$config->backend_navbar_color}}">
+                                    <input  required  name="backend_navbar_color" value="{{$config->backend_navbar_color}}" type="color">
                                 </div>
                                 <div class="col-md-6">
                                     <select name="backend_navbar_position" class="form-control">
@@ -150,7 +150,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input  required class="form-control" value="{{$config->front_navbar_color}}" name="front_navbar_color">
+                                    <input  required  value="{{$config->front_navbar_color}}" name="front_navbar_color" type="color">
                                 </div>
                                 <div class="col-md-6">
                                     <select name="front_navbar_position" class="form-control">

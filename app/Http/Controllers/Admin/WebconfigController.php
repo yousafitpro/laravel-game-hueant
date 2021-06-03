@@ -30,7 +30,7 @@ class WebconfigController extends Controller
             'company_email'=>'required',
             'company_phone'=>'required',
             'company_address'=>'required',
-            'locale'=>'required',
+            'mylocale'=>'required',
             'front_navbar_color'=>'required',
             'front_navbar_position'=>'required',
             'backend_navbar_color'=>'required',
@@ -47,7 +47,7 @@ class WebconfigController extends Controller
         $webConfig->company_email=$request->company_email;
         $webConfig->company_phone=$request->company_phone;
         $webConfig->company_address=$request->company_address;
-        $webConfig->locale=$request->company_locale;
+        $webConfig->locale=$request->mylocale;
         $webConfig->front_navbar_color=$request->front_navbar_color;
         $webConfig->front_navbar_position=$request->front_navbar_position;
         $webConfig->backend_navbar_color=$request->backend_navbar_color;

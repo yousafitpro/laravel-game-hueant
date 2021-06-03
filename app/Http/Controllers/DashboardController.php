@@ -18,6 +18,10 @@ class DashboardController extends Controller
     }
     public function index()
     {
+        if(Auth::user()->type=='user')
+        {
+            return redirect(route('admin.game.getAll'));
+        }
         $data['userCount']=User::all()->count()-1;
         $data['gameCount']=game::all()->count();
         $data['tournamentCount']=tournament::all()->count();

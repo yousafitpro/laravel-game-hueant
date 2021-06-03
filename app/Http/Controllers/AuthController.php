@@ -18,7 +18,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','signup']]);
+        $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
     /**
@@ -28,16 +28,13 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function signup(Request $request)
+    public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|unique:users|max:30',
             'password' => 'required',
-            'moino' => 'required',
-            'location' => 'required',
-            'phone' => 'required',
-            'confirm_password' => 'required|same:password',
         ]);
         // if fail
         if ($validator->fails()) {
@@ -46,12 +43,10 @@ class AuthController extends Controller
         $admin=new User();
         // creating user
 
-        $admin->name=$request->name;
+        $admin->fname=$request->first_name;
+        $admin->lname=$request->last_name;
         $admin->email=$request->email;
-        $admin->type="admin";
-        $admin->phone=$request->phone;
-        $admin->moinumber=$request->moino;
-        $admin->location=$request->location;
+        $admin->type="user";
         $admin->password=bcrypt($request->password);
 
         try {

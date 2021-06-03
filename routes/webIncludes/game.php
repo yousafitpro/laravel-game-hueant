@@ -8,4 +8,5 @@ Route::prefix('admin/game/')
         Route::get('deleteOne/{id}',[App\Http\Controllers\Admin\GameController::class, 'deleteOne'])->name('admin.game.deleteOne');
         Route::post('update/{id}',[App\Http\Controllers\Admin\GameController::class, 'update'])->name('admin.game.update');
         Route::get('getAll',[App\Http\Controllers\Admin\GameController::class, 'getALL'])->name('admin.game.getAll');
+
     });
