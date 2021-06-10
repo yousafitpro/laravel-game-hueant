@@ -12,7 +12,7 @@
                        <table class="table  table-bordered table-hover dataTables-only" >
                            <thead>
                            <tr>
-                               <th>Position</th>
+                               <th>#</th>
                                <th>Name</th>
                                <th>Email</th>
                                <th>Time Taken</th>
@@ -87,7 +87,7 @@
                     <div class="card-body">
                         <br>
 <div style="width: 100%" class="d-flex align-items-center justify-content-center">
-    <span style="font-size: 20px">Amount:</span><label style="font-size: 15px; margin-left: 10px">$1000</label>
+    <span style="font-size: 20px">Amount:</span><label style="font-size: 15px; margin-left: 10px">{{$tournament->collected_amount}}</label>
 
 </div>
                     </div>
@@ -107,6 +107,15 @@
                                 <button  type="submit" class="form-control btn btn-primary" >Save</button>
                             </div>
                         </form>
+                        <form action="{{route('admin.leaderboard.distributeAmount',$tournament->id)}}" method="post">
+                            @csrf
+                            <div class="col-md-12">
+                                <br>
+
+                                <button  type="submit" class="form-control btn btn-primary" >Distribute Amount</button>
+                            </div>
+                        </form>
+
 
                     </div>
                 </div>

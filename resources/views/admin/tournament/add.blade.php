@@ -7,7 +7,9 @@
     <form action="{{route('admin.tournament.add')}}" method="post">
         @csrf
         <div class="card">
-
+            <div class="card-header">
+                <h3>Add Tournament</h3>
+            </div>
             <div class="card-body">
                 @include('errorBars.errorsArray',['title' => 'Error','errors'=>$errors])
                 <div class="row">

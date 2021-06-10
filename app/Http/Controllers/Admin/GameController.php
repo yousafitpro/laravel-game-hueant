@@ -7,6 +7,7 @@ use App\Models\game;
 use App\Models\listeduser;
 use App\Models\lottery;
 use App\Models\role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -68,7 +69,8 @@ class GameController extends Controller
     {
 //        $games=game::where('user_id',Auth::user()->id)->with('user')->get();
         $games=game::with('user')->get();
-        return view('admin.game.all')->with('games',$games);
+        $users=User::where('type',"!=","supper-admin")->get();
+        return view('admin.game.all')->with(['games'=>$games,'users'=>$users]);
     }
 
 

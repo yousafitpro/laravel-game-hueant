@@ -9,7 +9,9 @@
                     @csrf
 
                     <div class="card">
-
+                        <div class="card-header">
+                            <h3>Update Game</h3>
+                        </div>
                         <div class="card-body">
                             @include('errorBars.errorsArray',['title' => 'Error','errors'=>$errors])
                             <div class="row">

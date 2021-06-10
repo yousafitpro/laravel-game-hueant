@@ -5,7 +5,9 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <div class="card">
-
+                    <div class="card-header">
+                        <h3>Add User</h3>
+                    </div>
                     <div class="card-body">
                         @include('errorBars.errorsArray',['title' => 'Error','errors'=>$errors])
                         <h3>Add New User</h3>

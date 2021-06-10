@@ -10,8 +10,8 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a class="dropdown-item" href="{{route('user.showProfile')}}">Profile</a></li>
-                        <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
-                        <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
+{{--                        <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>--}}
+{{--                        <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>--}}
                         <li class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -69,6 +69,9 @@
                 <a href="{{route('admin.game.getAll')}}"><i class="fa fa-gamepad"></i> <span class="nav-label">Games</span></a>
             </li>
                 @endif
+            <li>
+                <a href="{{route('user.walletAmounts')}}"><i class="fa fa-google-wallet"></i> <span class="nav-label">Wallet</span></a>
+            </li>
         </ul>
 
     </div>

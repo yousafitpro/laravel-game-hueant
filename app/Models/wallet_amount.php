@@ -10,10 +10,7 @@ class wallet_amount extends Model
 {
     public function __construct()
     {
-        if(Auth::check())
-        {
-            $this->user_id=Auth::user()->id;
-        }
+
 
     }
     public function user()

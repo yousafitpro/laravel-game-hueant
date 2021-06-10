@@ -1,38 +1,31 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="card">
-
+        <div class="card-header">
+            <h3>Withdrawl Histories</h3>
+        </div>
         <div class="card-body">
     <div class="table-responsive">
         <table class="table  table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Email</th>
-                <th>Withdraw Amount</th>
-                <th>Request Amount</th>
-                <th>Request Status</th>
-                <th>Request Date</th>
-                <th>Request Completed Date</th>
-                <th>Actions</th>
+                <th>User Email</th>
+                <th>Requested Amount</th>
+                <th>Completed At</th>
+                <th>Status</th>
+
             </tr>
             </thead>
             <tbody>
 
-            @foreach($histories as $history)
+            @foreach($requests as $history)
             <tr class="center">
-                <td></td>
-                <td width="50px">
-                    <div class="dropdown dropdown-menu-bottom">
-                        <i class="fa fa-cogs" data-toggle="dropdown"></i>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
-                            <li><a href="{{route('admin.role.getOne',$history->id)}}">Cancel</a></li>
-                            <li><a href="{{route('admin.role.getOne',$history->id)}}">Approve</a></li>
-                        </ul>
-                    </div>
-                </td>
+                <td>{{$history->id}}</td>
+                <th>{{$history->user->email}}</th>
+                <td>{{$history->amount}}</td>
+                <td>{{$history->created_at}}</td>
+                <td>{{$history->status}}</td>
             </tr>
 {{--            Delete Moel--}}
             <div class="modal fade" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -58,8 +51,12 @@
             </tbody>
             <tfoot>
             <tr>
-                <th>Name</th>
-                <th>Actions</th>
+                <th>ID</th>
+                <th>User Email</th>
+                <th>Requested Amount</th>
+                <th>Completed At</th>
+                <th>Status</th>
+
             </tr>
             </tfoot>
         </table>

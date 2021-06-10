@@ -39,6 +39,22 @@ class LotteryController extends Controller
         {
             return Redirect::route('admin.lottery.add')->withErrors($validator);
         }
+        $total=$request->admin+$request->win1+$request->win2+$request->win3+$request->win4+$request->win5+$request->sec_win;
+        if($total>100)
+        {
+            Session::put("error-msg","Total Percentage Must be Less than 100% And given is ".$total);
+            return \redirect()->back();
+        }
+        if($total<100)
+        {
+            Session::put("error-msg","Total Percentage Must be Equal to 100% And given is ".$total);
+            return \redirect()->back();
+        }
+        if($request->sec_win_count<6)
+        {
+            Session::put("error-msg","Winners count must be greater than or equal to 6");
+            return \redirect()->back();
+        }
         $lottery=new lottery();
         $lottery->admin=$request->admin;
         $lottery->tournament_id=$request->tournament_id;
@@ -90,6 +106,22 @@ class LotteryController extends Controller
         if ($validator->fails())
         {
             return Redirect::route('admin.lottery.add')->withErrors($validator);
+        }
+        $total=$request->admin+$request->win1+$request->win2+$request->win3+$request->win4+$request->win5+$request->sec_win;
+        if($total>100)
+        {
+            Session::put("error-msg","Total Percentage Must be Less than 100% And given is ".$total);
+            return \redirect()->back();
+        }
+        if($total<100)
+        {
+            Session::put("error-msg","Total Percentage Must be Equal to 100% And given is ".$total);
+            return \redirect()->back();
+        }
+        if($request->sec_win_count<6)
+        {
+            Session::put("error-msg","Winners count must be greater than or equal to 6");
+            return \redirect()->back();
         }
         $lottery=lottery::find($id);
         $lottery->admin=$request->admin;

@@ -1,17 +1,20 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="card">
-
+        <div class="card-header">
+            <h3>Withdrawl Requests</h3>
+        </div>
         <div class="card-body">
     <div class="table-responsive">
         <table class="table  table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Withdraw Amount</th>
-                <th>Request Amount</th>
+                <th>user Email</th>
+                <th>Wallet Amount</th>
+                <th>Requested Amount</th>
                 <th>Created At</th>
-                <th>Withdraw Request Flag</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -19,15 +22,21 @@
 
             @foreach($requests as $request)
             <tr class="center">
-                <td></td>
+                <td>{{$request->id}}</td>
+                <td>{{$request->user->email}}</td>
+                <td>{{$request->wallet_amount}}</td>
+                <td>{{$request->amount}}</td>
+                <td>{{$request->created_at}}</td>
+                <td>{{$request->status}}</td>
+
                 <td width="50px">
                     <div class="dropdown dropdown-menu-bottom">
                         <i class="fa fa-cogs" data-toggle="dropdown"></i>
 
                         <ul class="dropdown-menu">
-                            <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
-                            <li><a href="{{route('admin.role.getOne',$request->id)}}">Cancel</a></li>
-                            <li><a href="{{route('admin.role.getOne',$request->id)}}">Approve</a></li>
+
+                            <li><a href="{{route('admin.withdrawalRequest.approve',$request->id)}}">Approve</a></li>
+                            <li><a href="{{route('admin.withdrawalRequest.reject',$request->id)}}">Reject</a></li>
                         </ul>
                     </div>
                 </td>
@@ -57,10 +66,11 @@
             <tfoot>
             <tr>
                 <th>ID</th>
-                <th>Withdraw Amount</th>
-                <th>Request Amount</th>
+                <th>user Email</th>
+                <th>Wallet Amount</th>
+                <th>Requested Amount</th>
                 <th>Created At</th>
-                <th>Withdraw Request Flag</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             </tfoot>

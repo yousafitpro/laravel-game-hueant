@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWithdrawalhistoriesTable extends Migration
+class CreateGameusersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateWithdrawalhistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('withdrawalhistories', function (Blueprint $table) {
+        Schema::create('gameusers', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('wallet_amount_id');
-            $table->string('amount');
-            $table->string('status')->nullable()->default('Pending');
+            $table->bigInteger('game_id');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateWithdrawalhistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('withdrawalhistories');
+        Schema::dropIfExists('gameusers');
     }
 }

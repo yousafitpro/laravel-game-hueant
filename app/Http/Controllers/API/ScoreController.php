@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\listeduser;
 use App\Models\score;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,12 @@ class ScoreController extends Controller
     }
     public function score_by_game_id(Request $request)
     {
-        $score=score::where('game_id',$request->game_id)->get()->last();
-        return response()->json($score,200);
+        $users=listeduser::where('game_id',$request->game_id)->where('user_id',$request->game_id)->orderBy('time','ASC')->with('user')->get();
+
+        foreach($users->unique('user_id') as $user) {
+            return response()->json($user->time,200);
+        }
+
     }
     public function save_score(Request $request)
     {

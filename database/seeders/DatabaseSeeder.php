@@ -22,14 +22,14 @@ class DatabaseSeeder extends Seeder
         $user->type="supper-admin";
         $user->status="1";
         $user->address="here will be the address";
-        $user->email="u@gmail.com";
+        $user->email="admin@gmail.com";
         $user->password=bcrypt('12');
         $user->profile_image="1.png";
         $user->save();
 
         $role=new role();
         $role->user_id="1";
-        $role->name="Admin";
+        $role->name="User";
         $role->save();
     }
 }

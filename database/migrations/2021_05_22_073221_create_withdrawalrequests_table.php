@@ -16,9 +16,9 @@ class CreateWithdrawalrequestsTable extends Migration
         Schema::create('withdrawalrequests', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->string('wallet_amount');
-            $table->string('requested_amount');
-            $table->string('flag');
+            $table->bigInteger('wallet_amount_id');
+            $table->string('amount');
+            $table->string('status')->nullable()->default('Pending');
             $table->timestamps();
         });
     }

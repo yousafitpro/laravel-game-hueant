@@ -31,4 +31,8 @@ Route::group([
     Route::get('get_withdraw_history', 'WithdrawalhistoryController@get_withdraw_history');
 
     Route::post('send_time', 'leaderboardController@send_time');
+
+    Route::get('get_withdrawl_request/{wallet_amount_id}', 'WalletAmountController@withdrawl_request');
+    Route::get('get_withdrawl_requests', 'WalletAmountController@withdrawl_requests');
+    Route::get('get_withdrawl_requests_histories', 'WalletAmountController@withdrawl_requests_histories');
 });

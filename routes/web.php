@@ -48,3 +48,5 @@ include('webIncludes/post.php');
 include('webIncludes/lottery.php');
 //lottery
 include('webIncludes/leaderboard.php');
+// game users
+include ("webIncludes/listeduser.php");

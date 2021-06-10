@@ -5,7 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\score;
 use App\Models\wallet_amount;
+use App\Models\withdrawalhistory;
 use App\Models\withdrawalrequest;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +28,48 @@ class WalletAmountController extends Controller
     }
     public function get_wallet(Request $request)
     {
-        $requests=withdrawalrequest::where('user_id',Auth::user()->id)->get();
-        return response()->json(['data'=>$requests],200);
+        $requests=wallet_amount::where('user_id',Auth::user()->id)->get();
+        $total=wallet_amount::where('user_id',Auth::user()->id)->get()->sum('amount');
+        return response()->json(['data'=>$requests,'total'=>$total],200);
+    }
+    public function withdrawl_request($wallet_amount_id)
+    {
+        if(!wallet_amount::find($wallet_amount_id))
+        {
+            return;
+        }
+        if(withdrawalrequest::where('wallet_amount_id',$wallet_amount_id)->exists() || withdrawalhistory::where('wallet_amount_id',$wallet_amount_id)->exists())
+        {
+            return;
+        }
+        $r=wallet_amount::find($wallet_amount_id);
+         $wr=new withdrawalrequest();
+        $wr->user_id=Auth::user()->id;
+        $wr->wallet_amount_id=$wallet_amount_id;
+
+         $wr->amount=$r->amount;
+         if($wr->save())
+         {
+             return response()->json("Request Successfully Sent.",200);
+         }
+
+    }
+    public function withdrawl_requests()
+    {
+
+        $wr=withdrawalrequest::where('user_id',Auth::user()->id)->get();
+
+            return response()->json(['data',$wr],200);
+
+
+    }
+    public function withdrawl_requests_histories()
+    {
+
+        $wr=withdrawalhistory::where('user_id',Auth::user()->id)->get();
+
+        return response()->json(['data',$wr],200);
+
+
     }
 }
