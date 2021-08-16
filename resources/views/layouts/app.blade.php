@@ -53,6 +53,7 @@ $url="";
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
+                                    <h1>ssdsd</h1>
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
