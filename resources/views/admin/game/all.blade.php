@@ -15,6 +15,7 @@
         <table class="table  table-bordered table-hover dataTables-example" >
             <thead>
             <tr>
+                <th>Game ID (Key)</th>
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
@@ -23,6 +24,7 @@
 
             @foreach($games as $game)
             <tr class="center">
+                <td>{{$game->id}}</td>
                 <td>{{$game->name}}</td>
                 <td width="50px">
                     <div class="dropdown dropdown-menu-bottom">
@@ -73,7 +75,9 @@
             </tbody>
             <tfoot>
             <tr>
+                <th>Game ID (Key)</th>
                 <th>Name</th>
+
                 <th>Actions</th>
             </tr>
             </tfoot>

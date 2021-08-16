@@ -91,13 +91,18 @@ class leaderboardController extends Controller
             {
                if ($i>$user->sec_win_count)
                {
-                   $amount=($remaing_amout/100)*$l->sec_win;
-                   $remaing_amout=$remaing_amout-$amount;
-                   self::wallet_amount($user->user_id,$amount);
-                   $listedUsers=listeduser::where('game_id',$t->game_id)->delete();
-                   $gamers=gameuser::where('game_id',$t->game_id)->delete();
-                   Session::put("success-msg","Amount Distributed Successfully");
-                   return \redirect(route('admin.game.getAll'));
+
+                   ($remaing_amout>0);
+                   {
+
+                       self::wallet_amount($t->user_id,$remaing_amout);
+                       $remaing_amout=$remaing_amout-$remaing_amout;
+                       $listedUsers=listeduser::where('game_id',$t->game_id)->delete();
+
+                       $gamers=gameuser::where('game_id',$t->game_id)->delete();
+
+                       return \redirect(route('admin.game.getAll'));
+                   }
 
                }
                else
@@ -105,16 +110,7 @@ class leaderboardController extends Controller
                    $amount=($remaing_amout/100)*$l->sec_win;
                    $remaing_amout=$remaing_amout-$amount;
                    self::wallet_amount($user->user_id,$amount);
-                   $newi=$i+1;
-                   ($newi>$user->sec_win_count && $remaing_amout>0);
-                   {
-                       self::wallet_amount($t->user_id,$remaing_amout);
-                       $listedUsers=listeduser::where('game_id',$t->game_id)->delete();
 
-                       $gamers=gameuser::where('game_id',$t->game_id)->delete();
-
-                       return \redirect(route('admin.game.getAll'));
-                   }
                }
 
             }

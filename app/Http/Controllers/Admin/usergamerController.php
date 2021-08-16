@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\mailController;
+use App\Models\game;
 use App\Models\gameuser;
 use App\Models\listeduser;
 use App\Models\User;
@@ -24,7 +26,12 @@ class usergamerController extends Controller
         $user=new gameuser();
         $user->game_id=$game_id;
         $user->user_id=$id;
+
         $user->save();
+        $u=User::find($id);
+        $g=game::find($game_id);
+        mailController::sendMail($u->email,"Congratulation! Now you are the part of Tournament",$g,'emails.user.addedInGame');
+
         Session::put("success-msg","User Successfully Added");
    return redirect()->back();
     }

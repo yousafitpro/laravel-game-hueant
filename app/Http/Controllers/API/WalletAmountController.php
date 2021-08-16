@@ -34,13 +34,23 @@ class WalletAmountController extends Controller
     }
     public function withdrawl_request($wallet_amount_id)
     {
+
         if(!wallet_amount::find($wallet_amount_id))
         {
-            return;
+
+            return response()->json("There is No request with this ID",200);
         }
-        if(withdrawalrequest::where('wallet_amount_id',$wallet_amount_id)->exists() || withdrawalhistory::where('wallet_amount_id',$wallet_amount_id)->exists())
+        if(withdrawalrequest::where('wallet_amount_id',$wallet_amount_id)->exists())
         {
-            return;
+
+            return response()->json("Request Already Successfully Sent.",200);
+        }
+        if (withdrawalhistory::where('wallet_amount_id',$wallet_amount_id)->exists() && withdrawalhistory::where('wallet_amount_id',$wallet_amount_id)->where('status','Completed')->exists())
+        {
+
+            return response()->json("Request in Process",200);
+
+
         }
         $r=wallet_amount::find($wallet_amount_id);
          $wr=new withdrawalrequest();

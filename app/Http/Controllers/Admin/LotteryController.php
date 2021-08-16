@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\game;
+use App\Models\gameuser;
+use App\Models\listeduser;
 use App\Models\lottery;
 use App\Models\tournament;
 use Illuminate\Database\Eloquent\Model;
@@ -82,8 +85,27 @@ class LotteryController extends Controller
     public function deleteOne($id)
     {
         $lottery=lottery::find($id);
+        if(tournament::where('id',$lottery->tournament_id)->exists())
+        {
+            $t=tournament::where('id',$lottery->tournament_id)->first();
+            $t->delete();
+            if(game::where('id',$t->game_id)->exists())
+            {
+                $g=game::where('id',$t->game_id)->first();
+                $g->delete();
+            }
+        }
+
+
+        $gu=gameuser::where('game_id',$g->id);
+        $lu=listeduser::where('game_id',$g->id);
+
         if($lottery->delete())
         {
+
+
+            $gu->delete();
+            $lu->delete();
             Session::put('success-msg',"lottery Successfully Deleted");
         }
         return redirect(route('admin.lottery.getAll'));

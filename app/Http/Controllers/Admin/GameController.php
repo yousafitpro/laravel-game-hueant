@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\game;
+use App\Models\gameuser;
 use App\Models\listeduser;
 use App\Models\lottery;
 use App\Models\role;
+use App\Models\tournament;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,8 +50,35 @@ class GameController extends Controller
     public function deleteOne($id)
     {
         $game=game::find($id);
+        if(tournament::where('game_id',$game->id)->exists())
+        {
+
+            $t=tournament::where('game_id',$game->id)->first();
+            $t->delete();
+            if(lottery::where('tournament_id',$t->id)->exists())
+            {
+                $l=lottery::where('tournament_id',$t->id)->first();
+                $l->delete();
+            }
+        }
+
+        if(gameuser::where('game_id',$game->id))
+        {
+            $gu=gameuser::where('game_id',$game->id);
+            $gu->delete();
+        }
+        if(listeduser::where('game_id',$game->id))
+        {
+            $lu=listeduser::where('game_id',$game->id);
+            $lu->delete();
+        }
+
         if($game->delete())
         {
+
+
+
+
             Session::put('success-msg',"Game Successfully Deleted");
         }
         return redirect(route('admin.game.getAll'));

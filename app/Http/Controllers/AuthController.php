@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,6 +31,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -42,7 +44,7 @@ class AuthController extends Controller
         }
         $admin=new User();
         // creating user
-
+        $admin->addedby_id="1";
         $admin->fname=$request->first_name;
         $admin->lname=$request->last_name;
         $admin->email=$request->email;
@@ -50,13 +52,10 @@ class AuthController extends Controller
         $admin->password=bcrypt($request->password);
 
         try {
-//            Mail::send('emails.newUserRegistered', ['user' => $admin], function ($m) use ($request) {
-//                $m->from(Config::get('myconfig.mail.from'), Config::get('myconfig.mail.name'));
-//
-//                $m->to(Config::get('myconfig.mail.from'),"Dear Admin")
-//                    ->subject("New User Registration");
-//            });
+
             $admin->save();
+            mailController::sendMail(Config::get('myconfig.mail.admin_email'),"New User Registered successfully",$request,'emails.admin.newUserSignup');
+            mailController::sendMail($request->email,"Congratulation! successfully registered",$request,'emails.user.signup');
             return response()->json(['msg'=>"You have been Registered Successfully"],200);
         }
         catch (\Exception $e) {
