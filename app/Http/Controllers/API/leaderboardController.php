@@ -26,8 +26,10 @@ class leaderboardController extends Controller
           return response()->json(['message'=>"Time Successfully Saved"],200);
 
     }
+
     public function leaderboard(Request $request)
     {
+        //ssdasd
         $t=tournament::where('game_id',$request->game_id)->first();
         $endDate=Carbon::parse($t->start_date)->addMonths($t->duration);
         $users=listeduser::where('game_id',$request->game_id)->orderBy('time','ASC')->with('user')->get();
