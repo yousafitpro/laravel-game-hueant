@@ -15,6 +15,10 @@ class leaderboardController extends Controller
 {
     public function send_time(Request $request)
     {
+        if(!tournament::where('game_id',$request->game_id)->exists())
+        {
+            return response()->json(['message'=>"Tournament is not Created yet for this game"],200);
+        }
 //        if(!gameuser::where("user_id",auth('api')->user()->id)->where('game_id',$request->game_id)->exists())
 //        {
 //            return response()->json(['message'=>"Sorry! You are not the part of this Tournament"],409);
