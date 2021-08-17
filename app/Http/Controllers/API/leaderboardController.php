@@ -30,6 +30,10 @@ class leaderboardController extends Controller
     public function leaderboard(Request $request)
     {
         //ssdasd
+        if(!tournament::where('game_id',$request->game_id)->exists())
+        {
+            return response()->json(['message'=>"Tournament is not Created yet for this game"],200);
+        }
         $t=tournament::where('game_id',$request->game_id)->first();
         $endDate=Carbon::parse($t->start_date)->addMonths($t->duration);
         $users=listeduser::where('game_id',$request->game_id)->orderBy('time','ASC')->with('user')->get();
