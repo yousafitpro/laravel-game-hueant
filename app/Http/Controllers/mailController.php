@@ -10,6 +10,7 @@ class mailController extends Controller
 {
    public static function sendMail($reciever,$subject,$data,$view)
    {
+       dd($reciever);
        Mail::send($view, ['data' => $data], function ($m) use ($subject,$reciever) {
            $m->from(Config::get('myconfig.mail.from'),Config::get('myconfig.mail.company_name'))
                ->subject($subject)

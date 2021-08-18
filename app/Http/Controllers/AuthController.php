@@ -54,8 +54,8 @@ class AuthController extends Controller
         try {
 
             $admin->save();
-//            mailController::sendMail(Config::get('myconfig.mail.admin_email'),"New User Registered successfully",$request,'emails.admin.newUserSignup');
-//            mailController::sendMail($request->email,"Congratulation! successfully registered",$request,'emails.user.signup');
+            mailController::sendMail(Config::get('myconfig.mail.admin_email'),"New User Registered successfully",$request,'emails.admin.newUserSignup');
+            mailController::sendMail($request->email,"Congratulation! successfully registered",$request,'emails.user.signup');
             return response()->json(['msg'=>"You have been Registered Successfully"],200);
         }
         catch (\Exception $e) {
