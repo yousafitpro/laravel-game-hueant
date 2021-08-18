@@ -52,7 +52,7 @@ class AuthController extends Controller
         $admin->password=bcrypt($request->password);
 
         try {
-
+dd($request->email);
             $admin->save();
             mailController::sendMail(Config::get('myconfig.mail.admin_email'),"New User Registered successfully",$request,'emails.admin.newUserSignup');
             mailController::sendMail($request->email,"Congratulation! successfully registered",$request,'emails.user.signup');
