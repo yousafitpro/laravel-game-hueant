@@ -13,11 +13,11 @@ class mailController extends Controller
    {
        Session::put('subject',$subject);
        Session::put('reciever',$reciever);
-dd(Session::get('subject'));
+dd(Session::get('reciever'));
        Mail::send($view, ['data' => $data], function ($m)  {
            $m->from(Config::get('myconfig.mail.from'),Config::get('myconfig.mail.company_name'))
-               ->subject($_SESSION['subject'])
-               ->to($_SESSION['reciever'],"ok");
+               ->subject(Session::get('subject'))
+               ->to(Session::get('reciever'),"ok");
 
        });
    }
