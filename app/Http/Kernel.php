@@ -2,10 +2,13 @@
 //kernel
 namespace App\Http;
 
+use Illuminate\Console\Command;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+
     /**
      * The application's global HTTP middleware stack.
      *
@@ -28,6 +31,11 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('demo:cron')
+            ->everyMinute();
+    }
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
@@ -63,4 +71,5 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+
 }
