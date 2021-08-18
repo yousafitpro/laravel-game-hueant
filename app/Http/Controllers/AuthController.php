@@ -50,7 +50,8 @@ class AuthController extends Controller
         $admin->email=$request->email;
         $admin->type="user";
         $admin->password=bcrypt($request->password);
-
+dd(Config::get('myconfig.mail.admin_email'));
+return;
         try {
 
             $admin->save();
