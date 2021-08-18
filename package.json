@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "save": "git add . && git commit -m 'ok'",
+        "git-save": "git add . && git commit -m 'ok' && git push",
         "development": "mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
