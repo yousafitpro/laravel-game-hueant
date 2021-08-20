@@ -48,6 +48,7 @@ class WalletAmountController extends Controller
         {
             if($w->status='0')
             {
+                return $w->amount;
                $total=$total+$w->amount;
             }
 
