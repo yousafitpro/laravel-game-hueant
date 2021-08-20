@@ -31,9 +31,9 @@
                         <i class="fa fa-cogs" data-toggle="dropdown"></i>
 
                         <ul class="dropdown-menu">
-                            <li><a href="{{route('admin.user.gameusers.getAllListed',$game->id)}}">All Gamers</a></li>
+{{--                            <li><a href="{{route('admin.user.gameusers.getAllListed',$game->id)}}">All Gamers</a></li>--}}
 
-                            <li><a href="{{route('admin.user.gameusers.getAllGamers',$game->id)}}">Add New Gamer</a></li>
+{{--                            <li><a href="{{route('admin.user.gameusers.getAllGamers',$game->id)}}">Add New Gamer</a></li>--}}
 
                         @if(Auth::user()->type=='supper-admin')
                             <li><a href="#" data-toggle="modal" data-target="#deleteModel">Delete</a></li>
