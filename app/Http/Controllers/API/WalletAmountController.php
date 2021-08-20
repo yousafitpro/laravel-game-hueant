@@ -36,6 +36,7 @@ class WalletAmountController extends Controller
             if(withdrawalrequest::where('wallet_amount_id',$w->id)->exists())
             {
                 $w->status='1';
+                //ok
             }
 
         }
