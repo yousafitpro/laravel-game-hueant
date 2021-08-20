@@ -46,7 +46,7 @@ class WalletAmountController extends Controller
         }
         foreach ($requests as $w)
         {
-            if($w->status='0')
+            if($w->status=='0')
             {
                 return $w->amount;
                $total=$total+$w->amount;
