@@ -29,7 +29,18 @@ class WalletAmountController extends Controller
     public function get_wallet(Request $request)
     {
         $requests=wallet_amount::where('user_id',Auth::user()->id)->get();
-        $total=wallet_amount::where('user_id',Auth::user()->id)->get()->sum('amount');
+        $ws=wallet_amount::where('user_id',Auth::user()->id)->get()->sum('amount');
+
+        $total=0;
+foreach ($ws as $s)
+{
+    if(withdrawalhistory::where('wallet_amount_id',$s->id)->exists())
+    {
+        $total=$total+$s->amount;
+    }
+
+}
+
         foreach ($requests as $w)
         {
             $w->status='0';
