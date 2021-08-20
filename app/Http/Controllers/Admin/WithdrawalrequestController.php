@@ -24,13 +24,16 @@ class WithdrawalrequestController extends Controller
     public function Approve($id)
     {
         $r=withdrawalrequest::find($id);
+
         $nr=new withdrawalhistory();
+        $wr=wallet_amount::find($r->wallet_amount_id);
         $nr->user_id=$r->user_id;
         $nr->status="Completed";
         $nr->wallet_amount_id=$r->wallet_amount_id;
         $nr->amount=$r->amount;
         if($nr->save())
         {
+            $wr->delete();
             $r->delete();
             Session::put("success-msg","Request Successfully Approved");
         }

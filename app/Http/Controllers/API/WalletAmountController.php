@@ -55,13 +55,13 @@ class WalletAmountController extends Controller
 
             return response()->json("Request Already Successfully Sent.",200);
         }
-        if (withdrawalhistory::where('wallet_amount_id',$wallet_amount_id)->exists() && withdrawalhistory::where('wallet_amount_id',$wallet_amount_id)->where('status','Completed')->exists())
-        {
-
-            return response()->json("Request in Process",200);
-
-
-        }
+//        if (withdrawalhistory::where('wallet_amount_id',$wallet_amount_id)->exists() && withdrawalhistory::where('wallet_amount_id',$wallet_amount_id)->where('status','Completed')->exists())
+//        {
+//
+//            return response()->json("Request in Process",200);
+//
+//
+//        }
         $r=wallet_amount::find($wallet_amount_id);
          $wr=new withdrawalrequest();
         $wr->user_id=Auth::user()->id;
