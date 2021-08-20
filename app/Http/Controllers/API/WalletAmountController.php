@@ -32,14 +32,7 @@ class WalletAmountController extends Controller
         $ws=wallet_amount::where('user_id',Auth::user()->id)->get();
 
         $total=0;
-//     foreach ($ws as $s)
-//    {
-//    if(withdrawalhistory::where('wallet_amount_id',$s->id)->exists())
-//    {
-//        $total=$total+$s->amount;
-//    }
-//
-//       }
+
 
         foreach ($requests as $w)
         {
@@ -49,6 +42,15 @@ class WalletAmountController extends Controller
                 $w->status='1';
                 //ok
             }
+
+        }
+        foreach ($requests as $w)
+        {
+            if($w->status='0')
+            {
+               $total=$total+$w->amount;
+            }
+
 
         }
         return response()->json(['data'=>$requests,'total'=>$total],200);
