@@ -29,7 +29,7 @@ class WalletAmountController extends Controller
     public function get_wallet(Request $request)
     {
         $requests=wallet_amount::where('user_id',Auth::user()->id)->get();
-        $ws=wallet_amount::where('user_id',Auth::user()->id)->get()->sum('amount');
+        $ws=wallet_amount::where('user_id',Auth::user()->id)->get();
 
         $total=0;
 foreach ($ws as $s)
