@@ -19,6 +19,11 @@ class leaderboardController extends Controller
 
     public function leaderboard($id)
     {
+      if(!tournament::where('game_id',$id)->exists())
+      {
+          Session::put('error-msg',"This Game has no tournament.");
+          return \redirect()->back();
+      }
         $t=tournament::where('game_id',$id)->first();
         $users=listeduser::where('game_id',$id)->orderBy('time','ASC')->with('user')->get();
 
